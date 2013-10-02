@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-# starting key should begin with a capital letter
-# last string added should end with a ., ! or ?
-
 
 import sys, random, twitter
 
