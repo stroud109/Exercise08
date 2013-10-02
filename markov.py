@@ -1,7 +1,4 @@
 #!/usr/bin/env python
-# starting key should begin with a capital letter
-# last string added should end with a ., ! or ?
-
 
 import sys, random
 
@@ -36,8 +33,14 @@ def make_chains(corpus):
 def make_text(chains): # chains is a dictionary
     """Takes a dictionary of markov chains and returns random text
     based off an original text."""
+
+    capitalized_key_list = []
+
+    for key in chains.keys(): # chains.keys() results in in a list
+        if key[0].istitle():
+            capitalized_key_list.append(key)
     
-    random_key = random.choice(chains.keys())
+    random_key = random.choice(capitalized_key_list) # this key needs to be a random CAPPED key
     random_value = random.choice(chains[random_key])
 
     new_text = []
@@ -59,6 +62,11 @@ def make_text(chains): # chains is a dictionary
                 break
         else:
             break
+
+    # starting key should begin with a capital letter
+    # last string added should end with a . ! or ?
+    # no punctuation should occur until the final character 
+
 
     return " ".join(new_text) 
 
